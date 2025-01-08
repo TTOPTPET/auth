@@ -1,30 +1,8 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   userInfo: null,
 };
-
-export const getProfile = createAsyncThunk(
-  "user/getProfile",
-  async (_, thunkAPI) => {
-    try {
-      // const response = await requests.get("api/profile/");
-      const response = {
-        data: {
-          id: 1,
-          username: "test@test.ru",
-          full_name: "admin",
-          token: "eTestToken",
-        },
-        status: 200,
-      };
-      thunkAPI.dispatch(setUserInfo(response.data));
-    } catch (error) {
-      console.error("Ошибка при получении профиля:", error);
-      throw error;
-    }
-  }
-);
 
 const userSlice = createSlice({
   name: "user",
